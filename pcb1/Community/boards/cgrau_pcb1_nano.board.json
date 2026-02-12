@@ -28,8 +28,8 @@
     "^VID_0403\\+PID_6001\\+.+"
   ],
   "Info": {
-    "CanInstallFirmware": true,
-    "CanResetBoard": true,
+    "CanInstallFirmware": false,
+    "CanResetBoard": false,
     "FirmwareBaseName": "cgrau_pcb1_nano",
     "FirmwareExtension": "hex",
     "FriendlyName": "cgrau pcb1 Nano",
@@ -59,7 +59,7 @@
     "MaxShifters": 6,
     "MaxSteppers": 4,
     "MaxInputMultiplexer": 6,
-    "MaxCustomDevices": 0
+    "MaxCustomDevices": 2
   },
   "Pins": [
     {

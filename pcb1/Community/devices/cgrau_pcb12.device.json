@@ -1,7 +1,7 @@
 {
     "$schema": "./mfdevice.schema.json",
     "Info": {
-      "Label": "cgrau's pcb1",
+      "Label": "Display",
       "Type": "pcb12",
       "Author": "cgrau",
       "URL": "https://github.com",

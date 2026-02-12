@@ -1,7 +1,7 @@
 {
     "$schema": "./mfdevice.schema.json",
     "Info": {
-      "Label": "cgrau's pcb1",
+      "Label": "Button Matrix",
       "Type": "pcb1",
       "Author": "cgrau",
       "URL": "https://github.com",
@@ -9,9 +9,6 @@
     },
     "Config": {
       "Pins": [
-        "Pin 1",
-        "Pin 2",
-        "Pin 3"
       ],
       "isI2C": false
     },
