@@ -1,11 +1,15 @@
+#include "Arduino.h"
 #include "pcb1.h"
 #include "allocateMem.h"
 #include "commandmessenger.h"
+#include <U8x8lib.h>
 
 /* **********************************************************************************
     This is just the basic code to set up your custom device.
     Change/add your code as needed.
 ********************************************************************************** */
+
+U8X8_SSD1309_128X64_NONAME0_HW_I2C u8x8(/* reset=*/ U8X8_PIN_NONE);
 
 pcb1::pcb1(uint8_t Pin1, uint8_t Pin2)
 {
@@ -15,6 +19,12 @@ pcb1::pcb1(uint8_t Pin1, uint8_t Pin2)
 
 void pcb1::begin()
 {
+  u8x8.begin();
+  u8x8.setFlipMode(3); // Falls es wieder auf dem Kopf steht
+  u8x8.setFont(u8x8_font_chroma48medium8_r);
+    u8x8.setCursor(0, 0);
+    u8x8.print( F("Motherfucker 2!"));
+ _initialised=true;
 }
 
 void pcb1::attach(uint16_t Pin3, char *init)
@@ -31,6 +41,14 @@ void pcb1::detach()
 
 void pcb1::set(int16_t messageID, char *setPoint)
 {
+    // 1. Zeile explizit löschen, damit der alte, lange Text verschwindet
+    u8x8.clearLine(0); 
+    
+    // 2. Neuen Text schreiben
+    u8x8.setCursor(0, 0);
+    u8x8.print(F("set()"));
+
+    if(true) return; // Bricht hier ab für deinen Test
     /* **********************************************************************************
         Each messageID has it's own value
         check for the messageID and define what to do.
@@ -66,6 +84,8 @@ void pcb1::set(int16_t messageID, char *setPoint)
 }
 
 void pcb1::update()
-{
+{ 
     // Do something which is required regulary
+    //u8x8.setCursor(0, 0);
+    //u8x8.print( F("update()"));
 }

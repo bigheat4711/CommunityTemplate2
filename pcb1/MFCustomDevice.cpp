@@ -88,7 +88,7 @@ void MFCustomDevice::attach(uint16_t adrPin, uint16_t adrType, uint16_t adrConfi
     if (strcmp(parameter, "pcb1") == 0)
         _customType = MY_CUSTOM_DEVICE_1;
     if (strcmp(parameter, "pcb12") == 0)
-        _customType = MY_CUSTOM_DEVICE_2;
+        _customType = MY_CUSTOM_DEVICE_1;
 
     if (_customType == MY_CUSTOM_DEVICE_1) {
         /* **********************************************************************************
@@ -146,7 +146,7 @@ void MFCustomDevice::attach(uint16_t adrPin, uint16_t adrType, uint16_t adrConfi
         // or this function could be called from the custom constructor or attach() function
         _mydevice->begin();
         _initialized = true;
-    } else if (_customType == MY_CUSTOM_DEVICE_2) {
+    } else if (_customType == MY_CUSTOM_DEVICE_1) {
         /* **********************************************************************************
             Check if the device fits into the device buffer
         ********************************************************************************** */
@@ -218,7 +218,7 @@ void MFCustomDevice::detach()
     _initialized = false;
     if (_customType == MY_CUSTOM_DEVICE_1) {
         _mydevice->detach();
-    } else if (_customType == MY_CUSTOM_DEVICE_2) {
+    } else if (_customType == MY_CUSTOM_DEVICE_1) {
         _mydevice->detach();
     }
 }
@@ -240,7 +240,7 @@ void MFCustomDevice::update()
     ********************************************************************************** */
     if (_customType == MY_CUSTOM_DEVICE_1) {
         _mydevice->update();
-    } else if (_customType == MY_CUSTOM_DEVICE_2) {
+    } else if (_customType == MY_CUSTOM_DEVICE_1) {
         _mydevice->update();
     }
 }
@@ -252,11 +252,14 @@ void MFCustomDevice::update()
 ********************************************************************************** */
 void MFCustomDevice::set(int16_t messageID, char *setPoint)
 {
-    if (!_initialized) return;
+    if (!_initialized) {
+        
+        cmdMessenger.sendCmd(kStatus, F("early ret 3848"));
+        return;}
 
     if (_customType == MY_CUSTOM_DEVICE_1) {
         _mydevice->set(messageID, setPoint);
-    } else if (_customType == MY_CUSTOM_DEVICE_2) {
+    } else if (_customType == MY_CUSTOM_DEVICE_1) {
         _mydevice->set(messageID, setPoint);
     }
 }

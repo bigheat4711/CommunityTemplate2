@@ -94,12 +94,17 @@ namespace CustomDevice
     ********************************************************************************** */
     void OnSet()
     {
+            cmdMessenger.sendCmd(kStatus, "!!!jeha!!!");
         int16_t device = cmdMessenger.readInt16Arg(); // get the device number
-        if (device >= customDeviceRegistered)         // and do nothing if this device is not registered
+        if (device >= customDeviceRegistered){         // and do nothing if this device is not registered
+            cmdMessenger.sendCmd(kStatus, F("early return"));
             return;
+        }
         int16_t messageID = cmdMessenger.readInt16Arg();  // get the messageID number
         char   *output    = cmdMessenger.readStringArg(); // get the pointer to the new raw string
         cmdMessenger.unescape(output);                    // and unescape the string if escape characters are used
+        cmdMessenger.sendCmd(kStatus, F("OnSet()"));
+        cmdMessenger.sendCmd(kStatus, output);
 #if defined(USE_2ND_CORE) && defined(ARDUINO_ARCH_RP2040)
         // copy the message, could get be overwritten from the next message while processing on 2nd core
         strncpy(payload, output, SERIAL_RX_BUFFER_SIZE);

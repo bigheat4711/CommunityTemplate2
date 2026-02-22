@@ -23,8 +23,10 @@ namespace Button
         //txt += " von: " + String(name);
         cmdMessenger.sendCmd(kDebug, String(name));
 #endif
-        if (!getBoardReady())
+        if (!getBoardReady()){
+        cmdMessenger.sendCmd(kDebug, F("board NOT ready"));
             return;
+        }
         cmdMessenger.sendCmdStart(kButtonChange);
         cmdMessenger.sendCmdArg(name);
         cmdMessenger.sendCmdArg(eventId);
@@ -54,7 +56,7 @@ namespace Button
         buttonsRegistered++;
 #ifdef DEBUG2CMDMESSENGER
         cmdMessenger.sendCmd(kDebug, F("Added button:"));
-        cmdMessenger.sendCmd(kDebug, name);
+        //cmdMessenger.sendCmd(kDebug, name);
 #endif
     }
 

@@ -19,4 +19,4 @@ firmware_version = firmware_version.strip(".")
 
 #platform = env.BoardConfig().get("platform", {})
 
-shutil.copytree("./pcb1/Community", "C:/Users/h5/AppData/Local/MobiFlight/MobiFlight Connector/Community/pcb1", dirs_exist_ok=True);
+shutil.copytree("./pcb1/Community", "C:/Users/Claudio/AppData/Local/MobiFlight/MobiFlight Connector/Community/pcb1", dirs_exist_ok=True);

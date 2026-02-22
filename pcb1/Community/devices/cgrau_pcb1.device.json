@@ -1,7 +1,7 @@
 {
     "$schema": "./mfdevice.schema.json",
     "Info": {
-      "Label": "Button Matrix",
+      "Label": "Display",
       "Type": "pcb1",
       "Author": "cgrau",
       "URL": "https://github.com",

@@ -604,6 +604,7 @@ void readConfigFromMemory(bool configFromFlash)
 
 void OnGetConfig()
 {
+        cmdMessenger.sendCmd(kStatus, F("xxx davor()"));
     cmdMessenger.sendCmdStart(kInfo);
     if (configStoredInEEPROM()) {
         cmdMessenger.sendCmdArg((char)MFeeprom.read_byte(MEM_OFFSET_CONFIG));
@@ -617,6 +618,7 @@ void OnGetConfig()
         }
     }
     cmdMessenger.sendCmdEnd();
+        cmdMessenger.sendCmd(kStatus, F("xxx danach()"));
     boardReady = true;
 }
 
